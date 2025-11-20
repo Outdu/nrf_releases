@@ -3,7 +3,7 @@ inputTypes:
   - pano_stream_enc1
   - pano_stream_enc2
   - pano_stream_enc3
-base_url: rtsp://192.168.1.150:8554/live/
+base_url: rtsp://127.0.0.1:8554/live/
 codecParams:
   - path: pano_stream_enc1
     width: 960

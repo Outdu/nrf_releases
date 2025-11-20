@@ -1,0 +1,9 @@
+[Unit]
+Description=Trigger sr_shutdown.service after 10 seconds
+
+[Timer]
+OnActiveSec=10s
+AccuracySec=1s
+
+[Install]
+WantedBy=timers.target

@@ -1,5 +1,5 @@
 logLevel: 1
-pipeline: rtspsrc location=rtsp://192.168.10.73/live2.sdp ! rtph264depay ! avdec_h264 ! videoconvert ! videorate ! video/x-raw,width=960,height=540,format=RGB,framerate=10/1 ! appsink name=v_rgb_full2 sync=false max-buffers=2 drop=true
+pipeline: rtspsrc location=rtsp://192.168.10.63/live2.sdp ! rtph264depay ! avdec_h264 ! videoconvert ! videorate ! video/x-raw,width=960,height=540,format=RGB,framerate=10/1 ! appsink name=v_rgb_full2 sync=false max-buffers=2 drop=true
 rgbFull: true
 rgbBy2: false
 rgbBy4: false

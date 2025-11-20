@@ -1,0 +1,7 @@
+[Unit]
+Description=Shutdown system after timer trigger
+
+[Service]
+Type=oneshot
+ExecStart=/sbin/shutdown -h now
+
