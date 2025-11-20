@@ -1,0 +1,15 @@
+logLevel: 1
+modelPath: "/srv/sr/edge/models/BEANS/pipes/model.xml"
+device: CPU
+detectionThreshold: 0.5
+nmsThreshold: 0.5
+inputTypes:
+  rgb:
+    - v_rgb_full2
+outputTypes:
+  rgb_detection:
+    - pipes1
+skip_init_num_frames: 3
+sleep_time_in_millis: 900
+frameWidthOffset: 0
+frameHeightOffset: 0

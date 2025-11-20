@@ -1,0 +1,24 @@
+logLevel: 1
+out_mq_name: com.outdu.sensor.out.unicamera0
+out_mq_host: localhost
+inputTypes:
+  od: od1
+  rgb: v_rgb_full2
+zoneBreachROI:
+  x: 0.1
+  y: 0.1
+  width: 0.2
+  height: 0.6
+zoneBreachThreshold: 0.3
+tripLine:
+  start:
+    x: 0.7
+    y: 0.1
+  end:
+    x: 0.7
+    y: 0.8
+event_freq_in_sec: 10
+rgbBufferSizeInFrames: 30
+burstImgStoragePath: /srv/sr/media
+eventLabels:
+  - person

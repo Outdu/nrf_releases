@@ -1,0 +1,5 @@
+logLevel: 1
+inputTypes:
+  detection: fd1
+outputTypes:
+  track_object: fd1-tracker

@@ -1,0 +1,41 @@
+logLevel: 1
+device_name: ENTRY
+out_mq_name: com.outdu.sensor.out.unicamera0
+out_mq_host: localhost
+frModelPath: "/srv/sr/edge/models/FR/model.xml"
+agModelPath: "/srv/sr/edge/models/old/ag/saved_model.xml"
+lmModelPath: "/srv/sr/edge/models/old/fld/facial-landmarks-35-adas-0002.xml"
+emotionModelPath: "/srv/sr/edge/models/old/emotion/intel/emotions-recognition-retail-0003/FP32/emotions-recognition-retail-0003.xml"
+fr_device: GPU
+ag_device: CPU
+lm_device: CPU
+emotion_device: CPU
+roi:
+  x: 0.3208
+  y: 0.1852
+  width: 0.6
+  height: 0.6
+inputTypes:
+  hpd: hpd1
+  rgb: v_rgb_full1
+event_freq_in_sec: 60
+maxFacesForPerson: 10
+face_yaw_threshold: 10
+face_pitch_threshold: 10
+face_roll_threshold: 10
+emotionThreshold: 0.6
+genderThreshold: 0.6
+sharpnessThreshold: 200
+rgbBufferSizeInFrames: 30
+frThreshold: 0.3
+frDBPath: /srv/sr/edge/fr/db/person.db
+burstImgStoragePath: /srv/sr/edge/media/
+skipFirstNFaces: 10
+eventLabels:
+  - employee
+  - staff
+  - person
+  - motion
+alertLabels:
+  - unknown
+  - guest

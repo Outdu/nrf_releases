@@ -1,0 +1,7 @@
+logLevel: 1
+inputTypes:
+  rgb: v_rgb_full2
+outputTypes:
+  dewarpedRGB: dewarped_rgb2
+cameraParamsJsonFilePath: configs/cameraParams1.json
+cameraId: 1

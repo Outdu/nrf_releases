@@ -1,0 +1,22 @@
+logLevel: 1
+out_mq_name: com.outdu.sensor.out.unicamera0
+out_mq_host: localhost
+inputTypes:
+  sds:
+    - description
+    - pose
+  events:
+    - full_video_event
+    - thermal_video_event
+    - burst_img_event
+outputTypes:
+  burst_img_req: burst_img_req
+event_freq_in_sec: 10
+eventLabels:
+  - person
+  - motion
+alertLabels:
+  - leopard
+  - elephant
+  - tiger
+  - gaur

@@ -1,0 +1,14 @@
+[Unit]
+Description=Restreamer Service
+After=network.target network-online.target sr_rabbitmq_docker.service
+Requires=network.target network-online.target sr_rabbitmq_docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/srv/sr/edge/build/run_restreamer
+RemainAfterExit=no
+Restart=no
+User=root
+
+[Install]
+WantedBy=multi-user.target

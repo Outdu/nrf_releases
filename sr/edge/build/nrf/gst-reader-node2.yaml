@@ -1,0 +1,31 @@
+logLevel: 1
+pipeline: rtspsrc location=rtsp://192.168.10.73/live2.sdp ! rtph264depay ! avdec_h264 ! videoconvert ! videorate ! video/x-raw,width=960,height=540,format=RGB,framerate=10/1 ! appsink name=v_rgb_full2 sync=false max-buffers=2 drop=true
+rgbFull: true
+rgbBy2: false
+rgbBy4: false
+grayFull: false
+grayBy2: false
+grayBy4: false
+videoEncData: false
+audioEncData: false
+event: false
+inputRawData: false
+inputEncData: false
+inputFps: 10
+outputTypes:
+  rgbFull: v_rgb_full2
+  rgbBy2: v_rgb_by22
+  rgbBy4: v_rgb_by4
+  grayFull: GRAY_FULL
+  grayBy2: GRAY_BY2
+  grayBy4: GRAY_BY4
+  videoEncData: v_stream_enc
+  audioEncData: AUDIO_ENC_DATA
+  event: full_video_event
+inputTypes:
+  inputType: t_jpeg
+fileConfigs:
+  - sinkName: mux_sink
+    fileStorageDir: /srv/sr/media/FullVideo
+    fileExt: mp4
+    eventType: FullVideo

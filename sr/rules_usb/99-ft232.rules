@@ -1,0 +1,2 @@
+# FT232 device with serial A60134BY
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", SYMLINK+="ttyUSB_FTDI_A"

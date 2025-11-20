@@ -1,0 +1,3 @@
+#!/bin/sh
+/srv/sr/scripts/utils/clear_cache > /srv/sr/scripts/utils/cache_log.txt 2>&1 &
+

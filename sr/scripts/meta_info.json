@@ -1,0 +1,4 @@
+{
+	"subprocess_queue_name":"com.outdu.subprocess.in",
+	"shutdown_script_path":"/srv/sr/scripts/utils/shutdown_device.sh"
+}

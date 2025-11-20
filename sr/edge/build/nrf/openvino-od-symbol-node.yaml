@@ -1,0 +1,15 @@
+logLevel: 1
+modelPath: "/home/sr/sw/shathir_ws/models/SYMBOLS/model.xml"
+device: GPU
+detectionThreshold: 0.1
+nmsThreshold: 0.5
+inputTypes:
+  rgb:
+    - v_rgb_by2
+outputTypes:
+  rgb_detection:
+    - sd1
+skip_init_num_frames: 3
+sleep_time_in_millis: 1
+frameWidthOffset: 0
+frameHeightOffset: 0

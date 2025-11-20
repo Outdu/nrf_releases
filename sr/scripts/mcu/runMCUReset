@@ -1,0 +1,4 @@
+#!/bin/sh
+systemctl status sr_mcureader.service
+export LD_LIBRARY_PATH=/srv/sr/edge/build/lib:$LD_LIBRARY_PATH
+/srv/sr/scripts/mcu/mcu_reader /dev/ttyUSB_FTDI_A S

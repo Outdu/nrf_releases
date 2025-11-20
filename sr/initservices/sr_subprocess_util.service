@@ -1,0 +1,15 @@
+[Unit]
+Description=Subprocess Utility Python Script
+After=sr_rabbitmq_docker.service
+Requires=sr_rabbitmq_docker.service
+
+[Service]
+ExecStart=/usr/bin/python3 /srv/sr/scripts/utils/subprocess_util.py
+WorkingDirectory=/srv/sr/scripts/utils
+Restart=always
+RestartSec=5
+User=root
+
+[Install]
+WantedBy=multi-user.target
+

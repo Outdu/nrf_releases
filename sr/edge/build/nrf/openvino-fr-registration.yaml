@@ -1,0 +1,8 @@
+logLevel: 1
+faceInputImagePath: "/srv/sr/edge/fr/input"
+faceFeatureBinPath: "/srv/sr/edge/fr/bin"
+frModelPath: "/srv/sr/edge/models/FR/model.xml"
+fdModelPath: "/srv/sr/edge/models/FD/model.xml"
+device: GPU
+detectionThreshold: 0.5
+nmsThreshold: 0.5

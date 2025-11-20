@@ -1,0 +1,1 @@
+#cp -rf /srv/sr/database/srdevicedb /srv/sr/database/srdevicedbbck

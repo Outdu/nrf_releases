@@ -1,0 +1,56 @@
+#!/bin/bash
+
+until ip -4 addr show eno2 | grep -q inet; do
+    echo "Waiting for eno2 to get IP..."
+    sleep 2
+done
+
+sudo iptables -t nat -F
+
+# Enable IP forwarding (you did this already, but double check persistence if rebooted)
+echo 1 | sudo tee /proc/sys/net/ipv4/ip_forward
+
+
+get_ip() {
+    local iface=$1
+    ip -4 addr show "$iface" | grep -oP '(?<=inet\s)\d+(\.\d+){3}'
+}
+
+# Call function and assign to variable
+host_ip=$(get_ip eno2)
+
+# Use it
+echo "IP Address of eno2: $host_ip"
+
+#!/bin/bash
+
+# Function to add camera port-forward rule
+add_camera_rule() {
+    host_port=$1
+    camera_ip=$2
+    camera_port=554
+
+    echo "Adding iptables rules: HOST:$host_port → $camera_ip:$camera_port"
+
+    # DNAT: Redirect incoming traffic to camera
+    iptables -t nat -A PREROUTING  -p tcp --dport $host_port \
+        -j DNAT --to-destination $camera_ip:$camera_port
+
+    # MASQUERADE: Allow return traffic
+    iptables -t nat -A POSTROUTING -p tcp -d $camera_ip --dport $camera_port \
+        -j MASQUERADE
+
+    # Forward rules
+    iptables -A FORWARD -p tcp -d $camera_ip --dport $camera_port -j ACCEPT
+    iptables -A FORWARD -p tcp -s $camera_ip --sport $camera_port -j ACCEPT
+}
+
+###############
+# Add cameras
+###############
+
+add_camera_rule 9002 192.168.10.71
+add_camera_rule 9004 192.168.10.73
+add_camera_rule 9006 192.168.10.75
+
+echo "All camera rules added."

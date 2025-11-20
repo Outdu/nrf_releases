@@ -1,0 +1,3 @@
+#!/bin/bash
+/srv/sr/edge/build/restream_vision
+/srv/sr/edge/build/restream_thermal

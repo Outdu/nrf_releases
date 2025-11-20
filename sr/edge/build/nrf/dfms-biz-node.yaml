@@ -1,0 +1,15 @@
+logLevel: 1
+out_mq_name: com.outdu.sensor.out.unicamera0
+out_mq_host: localhost
+inputTypes:
+  od: dfms1
+  rgb: v_rgb_full2
+event_freq_in_sec: 10
+rgbBufferSizeInFrames: 30
+burstImgStoragePath: /srv/sr/media
+eventLabels:
+  - Cigarette
+  - Phone
+  - Yawn
+  - Eye-Closed
+  - Seatbelt

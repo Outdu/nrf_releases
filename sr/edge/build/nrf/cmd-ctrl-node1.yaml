@@ -1,0 +1,31 @@
+logLevel: 1
+out_mq_name: com.outdu.sensor.in.unicamera0
+out_mq_host: localhost
+inputTypes:
+  cmd: cmd1
+nodes:
+  - ov-face-detect-node
+  - tracker-node
+  - beans-counter-biz-node
+  - biz-common-node
+  - biz-face-node
+  - burst-image-node
+  - openvino-lpd-node
+  - openvino-pipes-node
+  - openvino-rods-node
+  - ov-face-pose-node
+
+featureNodesMap:
+  face-analytics:
+    - ov-face-detect-node
+    - tracker-node
+    - ov-face-pose-node
+    - biz-face-node
+  object-counter:
+    - openvino-pipes-node
+    - openvino-rods-node
+    - beans-counter-biz-node
+  emergency-detection:
+    - python-wrapper-node-yolopose
+    - biz-common-node
+    - burst-image-node

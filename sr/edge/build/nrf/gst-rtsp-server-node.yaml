@@ -1,0 +1,25 @@
+logLevel: 1
+inputTypes:
+  - pano_stream_enc1
+  - pano_stream_enc2
+  - pano_stream_enc3
+base_url: rtsp://192.168.1.150:8554/live/
+codecParams:
+  - path: pano_stream_enc1
+    width: 960
+    height: 540
+    fps: 10
+    profile: baseline
+    codec: H264
+  - path: pano_stream_enc2
+    width: 960
+    height: 540
+    fps: 10
+    profile: baseline
+    codec: H264
+  - path: pano_stream_enc3
+    width: 960
+    height: 540
+    fps: 10
+    profile: baseline
+    codec: H264

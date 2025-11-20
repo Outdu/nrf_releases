@@ -1,0 +1,15 @@
+logLevel: 1
+modelPath: "/srv/sr/edge/models/LPD/model.xml"
+device: GPU
+detectionThreshold: 0.5
+nmsThreshold: 0.5
+inputTypes:
+  rgb:
+    - v_rgb_fullhd1
+outputTypes:
+  rgb_detection:
+    - lpd1
+skip_init_num_frames: 3
+sleep_time_in_millis: 1
+frameWidthOffset: 0
+frameHeightOffset: 0

@@ -1,0 +1,13 @@
+logLevel: 1
+modelPath: "/srv/sr/edge/models/OD/yolov8n.hef"
+device: GPU
+detectionThreshold: 0.5
+nmsThreshold: 0.5
+inputTypes:
+  rgb: pano_rgb
+outputTypes:
+  detection: od1
+skip_init_num_frames: 30
+sleep_time_in_millis: 20
+tileWidth: 640
+tileHeight: 540

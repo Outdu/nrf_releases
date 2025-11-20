@@ -1,0 +1,15 @@
+logLevel: 1
+modelPath: "/srv/sr/edge/models/FD/model.xml"
+device: GPU
+detectionThreshold: 0.5
+nmsThreshold: 0.5
+inputTypes:
+  rgb:
+   - v_rgb_full1
+outputTypes:
+  detection:
+    - fd1
+skip_init_num_frames: 0
+sleep_time_in_millis: 0
+frameWidthOffset: 0
+frameHeightOffset: 0

@@ -1,0 +1,8 @@
+#!/bin/sh
+i=1
+while [ "$i" -ne 0 ]
+do
+	echo "clear cached"
+	echo 'sr123' | sudo -S sh -c 'sync; echo 1 > /proc/sys/vm/drop_caches'
+	sleep 10m
+done

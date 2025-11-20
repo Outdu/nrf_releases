@@ -1,0 +1,18 @@
+logLevel: 1
+out_mq_name: com.outdu.sensor.out.unicamera0
+out_mq_host: localhost
+inputTypes:
+  od: wd2
+  rgb: v_rgb_full2
+event_freq_in_sec: 30
+rgbBufferSizeInFrames: 30
+burstImgStoragePath: /srv/sr/orchestrator/media
+eventLabels:
+  - person
+alertLabels:
+  - knife
+  - gun
+crowdAlertEnabled: false
+crowdThreshold: 6
+crowdAlertLabels:
+  - person

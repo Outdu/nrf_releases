@@ -1,0 +1,83 @@
+#!/bin/bash
+ps aux | grep edge-nodes-graph | grep -v grep | awk '{print $2}' | xargs -r kill -9
+
+base_dir="/srv/sr/edge/build"
+pano_file="plane_pano_cropped.jpg"
+timeout_duration=20  # Timeout in seconds
+pano_pid=""
+cd $base_dir
+pid_file="$base_dir"/run_pano.pid
+
+rm -f "$base_dir"/logs/*.log
+rm -f "$base_dir"/nodes.log
+
+# Check if the PID file exists
+if [[ -f "$pid_file" ]]; then
+    pid=$(cat "$pid_file")
+
+    # Check if the process is running
+    if [[ -n "$pid" && -e /proc/$pid ]]; then
+        echo "Process with PID $pid is already running. Exiting..."
+        exit 0
+    fi
+fi
+
+echo "No running process found. Continuing script execution..."
+
+# Function to handle terminal close and kill pano script
+cleanup() {
+    echo "Terminal closed. Cleaning up..."
+    if [[ -n "$pano_pid" && -e /proc/$pano_pid ]]; then
+        echo "Killing pano script (PID: $pano_pid)..."
+        kill "$pano_pid"
+	sleep 2s
+	kill -9 "$pano_pid"
+    fi
+    exit 0
+}
+
+# Set trap to catch terminal close signals
+trap cleanup SIGINT SIGTERM SIGHUP
+
+# Remove all .jpg files in the base directory
+echo "Cleaning up old .jpg files..."
+rm -f "$base_dir"/*.jpg
+
+# Run the calibration script in the background and get its PID
+echo "Starting calibration..."
+rm "$base_dir"/nodes
+ln -s "$base_dir"/nodes_calib "$base_dir"/nodes
+export LD_LIBRARY_PATH="$base_dir"/lib:$LD_LIBRARY_PATH
+"$base_dir"/edge-nodes-graph > "$base_dir"/nodes.log 2>&1 &
+calib_pid=$!
+echo "Calibration script PID: $calib_pid"
+
+# Wait for pano_crop.jpg to be created with a timeout
+end_time=$((SECONDS + timeout_duration))
+while [[ ! -f "$base_dir/$pano_file" ]]; do
+    if [[ $SECONDS -ge $end_time ]]; then
+        echo "ERROR: Calibration failed. Timeout reached. Try again..."
+        kill "$calib_pid"
+        sleep 3s
+	break
+#        exit 1
+    fi
+    sleep 1
+done
+
+echo "SUCCESS: Calibration done successfully. Running the application..."
+kill -9 "$calib_pid"
+sleep 1s
+
+# Run the pano script and wait for it to complete
+echo "Starting application..."
+rm "$base_dir"/nodes
+ln -s "$base_dir"/nodes_run "$base_dir"/nodes
+
+echo "Starting edge-nodes-graph..."
+"$base_dir"/edge-nodes-graph > "$base_dir"/nodes.log 2>&1 &
+pano_pid=$!
+echo "Pano script PID: $pano_pid"
+echo $pano_pid > "$pid_file"
+
+wait "$pano_pid"

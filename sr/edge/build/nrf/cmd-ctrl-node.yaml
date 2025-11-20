@@ -1,0 +1,36 @@
+logLevel: 1
+out_mq_name: com.outdu.sensor.in.unicamera0
+out_mq_host: localhost
+inputTypes:
+  cmd: cmd1
+nodes:
+  - openvino-lpd-node
+  - anpr-biz-node
+  - python-wrapper-node-florence
+  - biz-common-node
+  - openvino-ad-node
+  - ad-biz-node
+  - openvino-od-pipes-node
+  - openvino-od-rods-node
+  - beans-counter-biz-node
+  - openvino-dfms-node
+  - dfms-biz-node
+featureNodesMap:
+  anpr:
+    - openvino-lpd-node 
+    - anpr-biz-node
+  scene-description:
+    - python-wrapper-node-florence
+    - biz-common-node
+  animal-detection:
+    - openvino-ad-node
+    - ad-biz-node
+  object-counter:
+    - openvino-od-pipes-node
+    - openvino-od-rods-node
+    - beans-counter-biz-node
+  driver-fatigue-monitoring-system:
+    - openvino-dfms-node
+    - dfms-biz-node
+
+

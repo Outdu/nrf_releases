@@ -1,0 +1,15 @@
+logLevel: 1
+inputTypes:
+  raw_rgb:
+    - v_rgb_full1
+    - v_rgb_full2
+    - v_rgb_full3
+  warped_rgb:
+    - dewarped_rgb1
+    - dewarped_rgb2
+    - dewarped_rgb3
+outputTypes:
+  pano_rgb: pano_rgb
+  pano_rgbs: []
+cameraParamsJsonFilePath: configs/cameraParams1.json
+cropParamsJsonFilePath: configs/cropParams1.json

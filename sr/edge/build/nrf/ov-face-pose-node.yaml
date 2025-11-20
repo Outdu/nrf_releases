@@ -1,0 +1,11 @@
+logLevel: 1
+hpdModelPath: "/srv/sr/edge/models/old/hpd_v2/saved_model.xml"
+device: NPU
+inputTypes:
+  rgb:
+   - v_rgb_full1
+  face_detection:
+    - fd1-tracker
+outputTypes:
+  hpd:
+    - hpd1

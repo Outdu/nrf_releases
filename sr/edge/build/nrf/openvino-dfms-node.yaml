@@ -1,0 +1,15 @@
+logLevel: 1
+modelPath: /srv/sr/edge/models/DFMS/model.xml
+device: CPU
+detectionThreshold: 0.5
+nmsThreshold: 0.5
+inputTypes:
+  rgb:
+    - v_rgb_full2
+outputTypes:
+  rgb_detection:
+    - dfms1
+skip_init_num_frames: 20
+sleep_time_in_millis: 200
+frameWidthOffset: 0
+frameHeightOffset: 0

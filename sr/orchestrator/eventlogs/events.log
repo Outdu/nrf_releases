@@ -1,0 +1,2 @@
+{"eventData": {"count": 1, "object": "elephant", "scores": [0.53515625], "zone": "west"}, "eventType": "elephant", "id": "elephant_2025-10-09X00-21-01_83680039", "instrumentName": "elephant", "isAlert": true, "messageType": "Event", "sensorId": "Camera", "timeStamp": "2025/10/09 00:21:01"},
+{"eventIds": ["elephant_2025-10-09X00-21-01_83680039"], "fileName": "/srv/sr/orchestrator/media/fromSensor/UniCamera/0/burstImage/2025-10-09/elephant-2025-10-09X00-21-01.jpg", "fileType": "BurstPictureForensic", "messageType": "NewFile", "timeStamp": "2025/10/09 00:21:01"},

@@ -1,0 +1,13 @@
+logLevel: 1
+inputTypes:
+  rgb:
+    - pano_rgb
+outputTypes:
+  pose:
+    - pose
+sleepTimeInSecs: 1
+requestTimeoutInSecs: 5
+fileStorageDir: /srv/sr/orchestrator/media
+eventTypes:
+  - HandsRise
+  - FallingDown

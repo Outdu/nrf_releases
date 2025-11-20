@@ -1,0 +1,7 @@
+#!/bin/sh
+#sleep 5
+export LD_LIBRARY_PATH=/opt/gstreamer/lib:/opt/gstreamer/lib/gstreamer-1.0:/opt/intel/openvino_2021/data_processing/dl_streamer/lib:/opt/intel/openvino_2021/data_processing/gstreamer/lib:/opt/intel/openvino_2021/opencv/lib:/opt/intel/openvino_2021/deployment_tools/ngraph/lib:/opt/intel/openvino_2021/deployment_tools/inference_engine/external/hddl/lib:/opt/intel/openvino_2021/deployment_tools/inference_engine/external/gna/lib:/opt/intel/openvino_2021/deployment_tools/inference_engine/external/mkltiny_lnx/lib:/opt/intel/openvino_2021/deployment_tools/inference_engine/external/tbb/lib:/opt/intel/openvino_2021/deployment_tools/inference_engine/lib/intel64
+/srv/sr/sensor/unicamera/peopleMonitoring /srv/sr/media/frRefImages/temp /srv/models/fd/face-detection-adas-0001.xml /srv/models/fld/facial-landmarks-35-adas-0002.xml /srv/models/fr/model-0000.xml
+
+echo "fr creation done"
+exit 0

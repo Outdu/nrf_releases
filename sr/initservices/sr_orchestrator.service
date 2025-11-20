@@ -1,0 +1,19 @@
+[Unit]
+Description=Orchestrator Service
+After=sr_rabbitmq_docker.service
+Requires=sr_rabbitmq_docker.service
+
+[Service]
+ExecStart=/srv/sr/orchestrator/run
+WorkingDirectory=/srv/sr/orchestrator
+
+# Always restart on failure
+Restart=always
+RestartSec=5
+
+User=sr
+Group=sr
+
+[Install]
+WantedBy=multi-user.target
+

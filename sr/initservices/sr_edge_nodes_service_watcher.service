@@ -1,0 +1,16 @@
+[Unit]
+Description=Edge Nodes Service Watcher
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/srv/sr/scripts/utils/sr_edge_nodes_service_watcher.sh
+Restart=always
+User=root
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=watch_edge_nodes
+
+[Install]
+WantedBy=multi-user.target
+

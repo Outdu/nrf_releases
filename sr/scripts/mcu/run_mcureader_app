@@ -1,0 +1,2 @@
+#!/bin/sh
+/srv/sr/scripts/mcu/runMCUReader > /dev/null &

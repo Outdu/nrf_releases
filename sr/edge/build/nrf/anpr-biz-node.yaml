@@ -1,0 +1,25 @@
+logLevel: 1
+out_mq_name: com.outdu.sensor.out.unicamera0
+out_mq_host: localhost
+inputTypes:
+  od: lpd1
+  rgb: v_rgb_fullhd1
+tdModelPath: /srv/sr/edge/models/TXTDET/saved_model.xml
+trModelPath: /srv/sr/edge/models/TXTREC/frozen_model.xml
+td_detection_threshold: 0.5
+td_nms_threshold: 0.5
+td_device: GPU
+tr_device: GPU
+
+min_num_chars_for_vote: 5
+min_num_plates_for_vote: 3
+num_secs_vote_timeout: 2
+eventType: LicensePlateDetected
+event_freq_in_sec: 2
+rgbBufferSizeInFrames: 60
+burstImgStoragePath: /srv/sr/media
+eventLabels:
+  - leopard
+  - elephant
+  - tiger
+  - gaur

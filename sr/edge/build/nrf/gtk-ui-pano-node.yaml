@@ -1,0 +1,9 @@
+logLevel: 1
+inputTypes:
+  rgb: pano_rgb1
+  od: od1
+  fd: fd
+  depth: depth
+  ageGender: ageGender
+displayWidth: 1920
+displayHeight: 1080

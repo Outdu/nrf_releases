@@ -1,0 +1,33 @@
+logLevel: 1
+#pipeline: rtspsrc location=rtsp://172.23.219.103/live1.sdp ! application/x-rtp ! tee name=t1 ! queue ! rtph264depay ! video/x-h264,stream-format=byte-stream,alignment=au ! appsink name=v sync=false max-buffers=2 drop=true t1. ! queue ! rtph264depay ! h264parse ! video/x-h264,stream-format=avc,alignment=au ! splitmuxsink muxer=mp4mux max-size-time=10000000000 name=mux_sink
+#pipeline: rtspsrc location=rtsp://192.168.2.105/live1.sdp ! application/x-rtp ! tee name=tee_rtp ! queue ! rtph264depay ! video/x-h264,stream-format=byte-stream,alignment=au ! appsink name=v_stream_enc sync=false max-buffers=2 drop=true tee_rtp. ! queue ! rtph264depay ! h264parse ! video/x-h264,stream-format=avc,alignment=au ! tee name=tee_enc ! queue ! avdec_h264 ! videoconvert ! video/x-raw,width=1920,height=1080,format=RGB ! tee name=tee_rgb_full ! queue ! appsink name=v_rgb_full sync=false max-buffers=2 drop=true tee_rgb_full. ! queue ! videoscale ! video/x-raw,width=640,height=360,format=RGB ! appsink name=v_rgb_by4 sync=false max-buffers=2 drop=true tee_enc. ! queue ! splitmuxsink muxer=mp4mux max-size-time=60000000000 name=mux_sink
+pipeline: rtspsrc location=rtsp://192.168.10.78/live1.sdp ! rtph264depay ! avdec_h264 ! videoconvert ! video/x-raw,width=1920,height=1080,format=RGB ! tee name=rgb_split ! queue ! appsink name=v_rgb_full1 sync=false max-buffers=2 drop=true rgb_split. ! queue ! videoscale ! video/x-raw,width=960,height=540,format=RGB ! appsink name=v_rgb_by2 sync=false max-buffers=2 drop=true
+rgbFull: true
+rgbBy2: true
+rgbBy4: false
+grayFull: false
+grayBy2: false
+grayBy4: false
+inputRawData: false
+inputEncData: false
+inputFps: 30
+videoEncData: false
+audioEncData: false
+event: false
+outputTypes:
+  rgbFull: v_rgb_full1
+  rgbBy2: v_rgb_by2
+  rgbBy4: v_rgb_by4
+  grayFull: GRAY_FULL
+  grayBy2: GRAY_BY2
+  grayBy4: GRAY_BY4
+  videoEncData: v_stream_enc
+  audioEncData: AUDIO_ENC_DATA
+  event: full_video_event
+inputTypes:
+  inputType: t_jpeg
+fileConfigs:
+  - sinkName: mux_sink
+    fileStorageDir: /srv/sr/sensor/media/FullVideo
+    fileExt: mp4
+    eventType: FullVideo

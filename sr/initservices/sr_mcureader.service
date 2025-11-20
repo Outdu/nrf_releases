@@ -1,0 +1,19 @@
+[Unit]
+Description=MCU Reader Service
+After=sr_rabbitmq_docker.service
+Requires=sr_rabbitmq_docker.service
+
+[Service]
+ExecStart=/srv/sr/scripts/mcu/runMCUReader
+WorkingDirectory=/srv/sr/scripts/mcu
+
+# Always restart on failure
+Restart=always
+RestartSec=5
+StartLimitIntervalSec=0
+
+User=sr
+Group=sr
+
+[Install]
+WantedBy=multi-user.target

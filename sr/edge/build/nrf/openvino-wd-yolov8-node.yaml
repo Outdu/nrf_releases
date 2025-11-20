@@ -1,0 +1,15 @@
+logLevel: 1
+modelPath: "/srv/sr/edge/models/WD/yolov11s_guns_knife_fp16.xml"
+device: GPU
+detectionThreshold: 0.8
+nmsThreshold: 0.5
+inputTypes:
+  rgb:
+    - pano_rgb
+outputTypes:
+  rgb_detection:
+    - wd1
+skip_init_num_frames: 10
+sleep_time_in_millis: 10
+frameWidthOffset: 960
+frameHeightOffset: 540

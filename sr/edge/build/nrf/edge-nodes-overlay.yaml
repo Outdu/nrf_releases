@@ -1,0 +1,49 @@
+logLevel: 1
+
+# Input queue types
+inputTypes:
+  rgb: pano_rgb
+  detection: od1
+  fd: fd
+
+# Output queue types
+outputTypes:
+  overlayed_rgb: overlayed_rgb
+  overlayed_rgbs:
+    - overlayed_rgb_crop1
+    - overlayed_rgb_crop2
+    - overlayed_rgb_crop3
+
+# Processing settings
+sleep_time_in_millis: 10
+
+# Drawing settings
+font_scale: 0.6
+thickness: 2
+blur_kernel_size: 31
+
+# Colors (RGB format: [R, G, B])
+# Box color - Blue
+box_color:
+  - 0    # R
+  - 0    # G
+  - 255  # B
+
+# Text color - White
+text_color:
+  - 255  # R
+  - 255  # G
+  - 255  # B
+
+# Text background color - Black
+text_bg_color:
+  - 0    # R
+  - 0    # G
+  - 0    # B
+
+# Face detection box color - Green
+fd_box_color:
+  - 0    # R
+  - 255  # G
+  - 0    # B
+

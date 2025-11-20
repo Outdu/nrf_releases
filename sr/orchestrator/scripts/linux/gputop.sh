@@ -1,0 +1,1 @@
+echo sr123 | sudo -S intel_gpu_top -o "gputop.log" -s 100 -e ""

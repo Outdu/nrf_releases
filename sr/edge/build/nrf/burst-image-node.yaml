@@ -1,0 +1,23 @@
+logLevel: 1
+inputTypes:
+  vrgbFull: v_rgb_full1
+  trgbFull: t_rgb_full
+  burst_img_req: burst_img_req
+  vdetections:
+    - od1
+    - sd1
+    - rod1
+    - pipe1
+  tdetections:
+    - thd
+  fr: fr1
+outputTypes:
+  event: burst_img_event
+bufferSizeInSecs: 10
+fileStorageDir: /srv/sr/media
+eventLabels:
+  - person
+  - elephant
+  - leopard
+  - tiger
+  - gaur
