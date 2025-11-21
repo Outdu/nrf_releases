@@ -1,5 +1,6 @@
 logLevel: 1
-pipeline: appsrc name=appsrc caps="video/x-raw,width=960,height=540,format=RGB" ! video/x-raw,format=RGB ! videoconvert ! x264enc tune=4 speed-preset=6 threads=1 key-int-max=10 ! h264parse ! video/x-h264,profile=baseline,stream-format=byte-stream,alignment=au ! appsink name=pano_stream_enc1 sync=false max-buffers=2 drop=true
+  #pipeline: appsrc name=appsrc caps="video/x-raw,width=960,height=540,format=RGB" ! video/x-raw,format=RGB ! videoconvert ! x264enc tune=4 speed-preset=6 threads=1 key-int-max=10 ! h264parse ! video/x-h264,profile=baseline,stream-format=byte-stream,alignment=au ! appsink name=pano_stream_enc1 sync=false max-buffers=2 drop=true
+pipeline: appsrc name=appsrc caps="video/x-raw,width=960,height=540,format=RGB" ! videoconvert ! vaapipostproc ! video/x-raw,format=NV12,width=960,height=540 ! vaapih264enc ! h264parse ! video/x-h264,stream-format=byte-stream,alignment=au ! appsink name=pano_stream_enc1 sync=false max-buffers=2 drop=true
 rgbFull: false
 rgbBy2: false
 rgbBy4: false

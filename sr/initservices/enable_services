@@ -2,12 +2,12 @@
 #README.MD
 #sr_edge_nodes.service
 #sr_edge_nodes_service_watcher.service
-sr_mcureader.service
-sr_mcureset.service
-sr_orchestrator.service
-sr_rabbitmq_docker.service
+sudo systemctl enable sr_mcureader.service
+sudo systemctl enable sr_mcureset.service
+sudo systemctl enable sr_orchestrator.service
+sudo systemctl enable sr_rabbitmq_docker.service
 #sr_restreamer.service
 #sr_shutdown.service
 #sr_shutdown.timer
-sr_subprocess_util.service
-
+sudo systemctl enable sr_subprocess_util.service
+sudo systemctl enable sr_auto_wifi.service

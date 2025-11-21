@@ -1,0 +1,12 @@
+[Unit]
+Description=Auto WiFi Reconnect Service
+After=network.target
+
+[Service]
+ExecStart=/srv/sr/scripts/utils/auto_wifi.sh
+Restart=always
+User=$USER
+
+[Install]
+WantedBy=multi-user.target
+
