@@ -1,0 +1,2 @@
+#!/bin/bash
+serve -s /srv/sr/edge/web_ui -l 8085 &

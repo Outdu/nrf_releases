@@ -17,7 +17,7 @@ wait_for_rabbitmq() {
 # Function to wait for cameras to be reachable
 wait_for_cameras() {
     echo "Waiting for cameras to be reachable..."
-    cameras=("192.168.10.61" "192.168.10.63" "192.168.10.65")
+    cameras=("192.168.10.71" "192.168.10.73" "192.168.10.75")
 
     for cam in "${cameras[@]}"; do
         while true; do
@@ -44,7 +44,7 @@ wait_for_cameras
 # Declare an associative array to map process names to start commands
 declare -A process_commands=(
     ["florence"]="/srv/sr/edge/florence/run"
-    ["edge-nodes-graph"]="/srv/sr/edge/build/run_calib_run_pano"
+    ["edge-nodes-graph"]="/srv/sr/edge/build/run"
     ["RTSPtoWeb"]="/srv/sr/edge/webrtc/run"
 )
 
