@@ -5,7 +5,7 @@ After=network.target
 [Service]
 ExecStart=/srv/sr/scripts/utils/auto_wifi.sh
 Restart=always
-User=$USER
+RestartSec=10
 
 [Install]
 WantedBy=multi-user.target
