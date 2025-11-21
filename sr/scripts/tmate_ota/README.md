@@ -33,30 +33,39 @@ A system service that automatically creates tmate sessions on boot and reports t
 
 ## Installation
 
-1. **Run the installation script:**
+1. **Install Python dependencies:**
    ```bash
-   cd client
-   sudo ./install.sh
+   pip install requests
    ```
 
-2. **Configure the agent:**
+2. **Ensure files are in place:**
+   - `agent.py` should be in `/srv/sr/scripts/tmate_ota/`
+   - `config.json` should be in `/srv/sr/scripts/tmate_ota/`
+
+3. **Install and enable the systemd service:**
    ```bash
-   sudo nano /etc/tmate-client/config.json
+   sudo cp sr_tmate_ota.service /etc/systemd/system/
+   sudo systemctl daemon-reload
+   sudo systemctl enable sr-tmate-ota
+   ```
+
+4. **Configure the agent:**
+   ```bash
+   sudo nano /srv/sr/scripts/tmate_ota/config.json
    ```
    
    Update at minimum:
    - `server_url`: Your tmate server URL (e.g., `http://your-server:1777`)
    - `api_key`: Your API key (must match server's API_KEY)
 
-3. **Start the service:**
+5. **Start the service:**
    ```bash
-   sudo systemctl start tmate-client
-   sudo systemctl enable tmate-client  # Enable on boot
+   sudo systemctl start sr-tmate-ota
    ```
 
 ## Configuration
 
-Edit `/etc/tmate-client/config.json`:
+Edit `/srv/sr/scripts/tmate_ota/config.json`:
 
 ```json
 {
@@ -84,25 +93,25 @@ Edit `/etc/tmate-client/config.json`:
 
 ```bash
 # Start service
-sudo systemctl start tmate-client
+sudo systemctl start sr-tmate-ota
 
 # Stop service
-sudo systemctl stop tmate-client
+sudo systemctl stop sr-tmate-ota
 
 # Restart service
-sudo systemctl restart tmate-client
+sudo systemctl restart sr-tmate-ota
 
 # Check status
-sudo systemctl status tmate-client
+sudo systemctl status sr-tmate-ota
 
 # View logs
-sudo journalctl -u tmate-client -f
+sudo journalctl -u sr-tmate-ota -f
 
 # View log file
 sudo tail -f /var/log/tmate-client/agent.log
 
 # Disable on boot
-sudo systemctl disable tmate-client
+sudo systemctl disable sr-tmate-ota
 ```
 
 ## How It Works
@@ -123,12 +132,17 @@ sudo systemctl disable tmate-client
    tmate --version
    ```
 
-2. Check service logs:
+2. Check if Python dependencies are installed:
    ```bash
-   sudo journalctl -u tmate-client -n 50
+   pip show requests
    ```
 
-3. Check log file:
+3. Check service logs:
+   ```bash
+   sudo journalctl -u sr-tmate-ota -n 50
+   ```
+
+4. Check log file:
    ```bash
    sudo cat /var/log/tmate-client/agent.log
    ```
@@ -167,24 +181,22 @@ sudo systemctl disable tmate-client
 You can run the agent manually for testing:
 
 ```bash
-sudo python3 /opt/tmate-client/agent.py
+sudo python3 /srv/sr/scripts/tmate_ota/agent.py
 ```
 
 Or with custom config:
 
 ```bash
-sudo TMATE_CLIENT_CONFIG=/path/to/config.json python3 /opt/tmate-client/agent.py
+sudo TMATE_CLIENT_CONFIG=/path/to/config.json python3 /srv/sr/scripts/tmate_ota/agent.py
 ```
 
 ## Uninstallation
 
 ```bash
-sudo systemctl stop tmate-client
-sudo systemctl disable tmate-client
-sudo rm /etc/systemd/system/tmate-client.service
+sudo systemctl stop sr-tmate-ota
+sudo systemctl disable sr-tmate-ota
+sudo rm /etc/systemd/system/sr_tmate_ota.service
 sudo systemctl daemon-reload
-sudo rm -rf /opt/tmate-client
-sudo rm -rf /etc/tmate-client
 sudo rm -rf /var/log/tmate-client
 ```
 

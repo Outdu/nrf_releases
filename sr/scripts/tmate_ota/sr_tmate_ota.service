@@ -1,0 +1,19 @@
+[Unit]
+Description=tmate Client Agent - Reports tmate sessions to server
+After=network.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/srv/sr/scripts/tmate_ota
+ExecStart=/usr/bin/python3 /srv/sr/scripts/tmate_ota/agent.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+
+

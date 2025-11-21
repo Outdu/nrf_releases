@@ -32,7 +32,7 @@ logger = logging.getLogger(__name__)
 
 
 class TmateAgent:
-    def __init__(self, config_path: str = "/etc/tmate-client/config.json"):
+    def __init__(self, config_path: str = "/srv/sr/scripts/tmate_ota/config.json"):
         self.config = self.load_config(config_path)
         self.device_id = self.get_device_id()
         self.agent_version = "1.0.0"
@@ -389,7 +389,7 @@ class TmateAgent:
 
 def main():
     """Entry point"""
-    config_path = os.getenv("TMATE_CLIENT_CONFIG", "/etc/tmate-client/config.json")
+    config_path = os.getenv("TMATE_CLIENT_CONFIG", "/srv/sr/scripts/tmate_ota/config.json")
     agent = TmateAgent(config_path)
     agent.run()
 
