@@ -1,0 +1,11 @@
+{
+  "server_url": "http://localhost:1777",
+  "api_key": "outdu-security-key",
+  "device_id": null,
+  "probe_interval": 30,
+  "health_check_interval": 10,
+  "tmate_command": "tmate",
+  "tmate_args": ["-S", "/tmp/tmate.sock", "new-session", "-d"]
+}
+
+
