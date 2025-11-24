@@ -44,6 +44,7 @@ class TmateAgent:
         default_config = {
             "server_url": os.getenv("TMATE_SERVER_URL", "http://localhost:1777"),
             "api_key": os.getenv("TMATE_API_KEY", "outdu-security-key"),
+            "client_name": None,  # Optional client name
             "device_id": None,  # Will be generated if not set
             "probe_interval": 30,  # seconds
             "health_check_interval": 10,  # seconds
@@ -275,6 +276,7 @@ class TmateAgent:
                 "device_id": self.device_id,
                 "agent_version": self.agent_version,
                 "created_at": int(datetime.utcnow().timestamp()),
+                "client_name": self.config.get("client_name"),
                 "tmate": {
                     "ssh": session_info.get("ssh"),
                     "web": session_info.get("web"),

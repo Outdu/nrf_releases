@@ -1,6 +1,7 @@
 {
   "server_url": "http://106.51.73.87:1777",
   "api_key": "d0ad9902-2f00-4937-849e-1dbec9f7a7f4",
+  "client_name": "360Camera",
   "device_id": null,
   "probe_interval": 300,
   "health_check_interval": 60,

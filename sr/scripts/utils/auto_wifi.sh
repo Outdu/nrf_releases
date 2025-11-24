@@ -1,7 +1,7 @@
 #!/bin/bash
 
-WIFI_SSID="TowerCam1"
-WIFI_PASS="TowerCam1"
+WIFI_SSID="TowerCam2"
+WIFI_PASS="TowerCam2"
 CHECK_INTERVAL=30        # Seconds between connection checks
 RETRY_SLEEP=60           # Sleep time if connection attempt fails
 

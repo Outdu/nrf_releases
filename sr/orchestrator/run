@@ -2,4 +2,6 @@
 JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 PATH=$JAVA_HOME/bin:$PATH
 rm -f /srv/sr/orchestrator/logs/*
+# purge 2 days old media
+./clean_media.sh 48
 java -Xmx256m -DORCH_LOG_LEVEL=ERROR -DBASE_CONFIG_PATH=/srv/sr/orchestrator -jar /srv/sr/orchestrator/Orchestrator.jar [-version] > /dev/null 2>&1
